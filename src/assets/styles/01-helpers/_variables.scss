@@ -1,0 +1,20 @@
+$colors: (
+  background-color: #fff,
+  primary: purple,
+  accent: #f50057,
+  text-body: #263238,
+  text-medium: #37474f,
+  text-mute: #b0bec5,
+  text-light: #fff,
+  error:  #d81b60,
+  success: #26a69a
+);
+
+$shadows: (
+  colored: 6px 12px 37px -6px rgba(128, 0, 128, 0.68),
+  colored-focused: 0 10px 10px -10px darken(rgba(128, 0, 128, 0.68), 5%),
+  input-normal: 0 15px 30px -10px rgba(0, 0, 0, 0.1),
+  input-focused: 0 10px 10px -10px rgba(0, 0, 0, 0.4)
+);
+
+$spacer: 0.8rem; // 8px

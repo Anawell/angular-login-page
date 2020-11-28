@@ -1,0 +1,19 @@
+.page__wrapper,
+.page__wrapper--pink,
+.page__wrapper--yellow {
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten, overlay, lighten, screen, normal;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.page__wrapper--pink {
+    background: #fee0cb;
+    background: linear-gradient(115.58deg, #260000 0%, #1700A4 100.22%), radial-gradient(92.72% 100% at 50% 0%, #da4fc6 0%, #651200 100%), radial-gradient(200% 200% at 105% 0%, #00ffde 0%, #820000 100%), radial-gradient(109.21% 213.32% at 100% 0%, #FF4D00 0%, #00d0ff 100%), linear-gradient(127.43deg, #D50000 0%, #f9f9f9 100%);
+}
+
+.page__wrapper--light {
+    background-image: url(/assets/img/gradient-mesh-violet-blue.png);
+}

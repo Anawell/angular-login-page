@@ -1,0 +1,7 @@
+@function renderColor($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+@function renderShadow($shadow-name) {
+    @return map-get($shadows, $shadow-name);
+}

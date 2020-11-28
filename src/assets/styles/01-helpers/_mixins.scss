@@ -1,0 +1,22 @@
+@mixin apply-theme($mode) {
+    @each $key, $value in map-get($themes, $mode) {
+        --#{$key}: #{$value};
+    }
+    background-color: var(--background-color);
+    color: var(--text-body);
+}
+  
+
+@mixin mq-min($size) {
+    @media screen and (min-width: $size ) {
+        @content;
+    }
+}
+
+@mixin mq-max($size) {
+    @media screen and (min-width: $size ) {
+        @content;
+    }
+}
+  
+  
