@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { environment } from '../environments/environment';
+import { environmentFirebase } from '../environments/env';
 import firebase from 'firebase/app'; 
 import 'firebase/auth';
 
@@ -16,8 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(private titleSeo: Title,
               private metaSeo: Meta) { 
-                const firebaseConfig = environment.firebaseConfig;
-                // Initialize Firebase
+                const firebaseConfig = environmentFirebase.firebaseConfig;
                 firebase.initializeApp(firebaseConfig);
               }
 
