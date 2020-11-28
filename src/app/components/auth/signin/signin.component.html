@@ -1,1 +1,43 @@
-<p>signin works!</p>
+<main class="page__wrapper page__wrapper--pink flex justify-center items-center">
+    <div class="glasscard flex justify-center items-center">
+        <form [formGroup]="signInForm" (ngSubmit)="onLogin()" class="form">
+            <div class="glasscard__body">
+                <h2 class="glasscard__title title--h2">Přihlaste se</h2>
+                <div class="form__item">
+                    <label for="email" class="form__label">
+                        Váš e-mail
+                    </label>
+                    <input id="email" type="email" class="form__input" [ngClass]="{'form__input--error': email.invalid && isSubmitted}" formControlName="email" placeholder="petr.novotny@gmail.com" required>
+                    <div *ngIf="isInputValid('email')" class="message message--error" aria-live="assertive">
+                        <p *ngIf="email.errors.required">
+                            Položka "email" musí být vyplněna.
+                        </p>
+                        <p *ngIf="email.errors.pattern">
+                            Prosím zadejte platný email.
+                        </p>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label for="password" class="form__label">
+                        Vaše heslo
+                    </label>
+                    <input id="password" type="password" class="form__input" [ngClass]="{'form__input--error': password.invalid && isSubmitted}" formControlName="password" placeholder="min. 6 znaky" required>
+                    <div *ngIf="isInputValid('password')" class="message message--error" aria-live="assertive">
+                        <p *ngIf="password.errors.required">
+                            Položka "password" musí být vyplněna.
+                        </p>
+                        <p *ngIf="password.errors.minlength">
+                            Heslo musí obsahovat alespoň 6 znaky.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="glasscard__footer form__actions flex flex-col items-center justify-center">
+                <button type="submit" class="btn btn--primary form__submit">
+                    Přihlásit se
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
