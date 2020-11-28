@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signin-feedback',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninFeedbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(private title: Title,
+              private meta: Meta) { }
 
   ngOnInit(): void {
   }
