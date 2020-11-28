@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SeoMetatagsService } from 'src/app/services/seo-metatags.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,10 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SigninComponent implements OnInit {
 
   constructor(private authService: AuthService,
+              private seoMetatagsService: SeoMetatagsService,
               private formBuilder: FormBuilder,
-              private router: Router,
-              private title: Title,
-              private meta: Meta) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.initSeoMeta();
@@ -68,10 +67,7 @@ export class SigninComponent implements OnInit {
   }
 
   initSeoMeta() {
-    this.meta.addTags([
-      { name: 'description', content: 'Barevný přihlašovací formulář vytvořený pomocí Angular' }
-    ])
-    this.title.setTitle('Přihlásit se | Webkomplet');
-  }
+    this.seoMetatagsService.setSeoMeta('Přihlásit se | Webkomplet', 'Barevný přihlašovací formulář vytvořený pomocí Angular')
+  } 
 
 }

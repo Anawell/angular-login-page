@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoMetatagsService } from 'src/app/services/seo-metatags.service';
 
 @Component({
   selector: 'app-signin-feedback',
@@ -8,10 +8,14 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class SigninFeedbackComponent implements OnInit {
 
-  constructor(private title: Title,
-              private meta: Meta) { }
+  constructor(private seoMetatagsService: SeoMetatagsService) { }
 
   ngOnInit(): void {
+    this.initSeoMeta();
   }
+
+  initSeoMeta() {
+    this.seoMetatagsService.setSeoMeta('Hurá | Webkomplet', 'Zadal(a) jste platný e‑mail a heslo!')
+  } 
 
 }
