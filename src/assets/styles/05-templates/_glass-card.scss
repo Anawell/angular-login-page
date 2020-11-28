@@ -27,6 +27,10 @@ $border-radius: $spacer * 2.5;
         padding: $spacer * 3 $spacer * 3 $spacer * 6;
     }
 
+    &__hero img {
+        width: 80%;
+    }
+
 }
 
 @supports (backdrop-filter: blur(5px)) {
