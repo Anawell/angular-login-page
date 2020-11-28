@@ -1,32 +1,25 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import firebase from 'firebase/app'; 
+import 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-
-  token: string;
-  userId: string;
-
-  constructor(private http: HttpClient) { }
+  // NB: ce sont des methodes asynchrones !
+  constructor() { }
 
   signInUser(email: string, password: string) {
-    return new Promise((resolve, reject) => {
-      this.http.post(
-        'http://localhost:3000/api/login',
-        { email: email, password: password })
-        .subscribe(
-          (authData: { token: string, userId: string }) => {
-            this.token = authData.token;
-            this.userId = authData.userId;
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-    });
+    return new Promise(
+      (resolve, reject) => {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(
+          () => { resolve() },
+          (error) => { reject(error) }
+        )
+      }
+    )
   }
+
 }
+

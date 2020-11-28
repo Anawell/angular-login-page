@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
     this.initSeoMeta();
   }
 
+  errorMessage: string;
   isSubmitted: boolean;
   signInForm: FormGroup = this.formBuilder.group({
     /* email: ['', [Validators.required, Validators.email]], */
@@ -47,19 +48,16 @@ export class SigninComponent implements OnInit {
   onLogin() {
     this.isSubmitted = true;
     if(this.signInForm.valid) {
-      const email = this.email.value;
-      const password = this.password.value;
-      this.router.navigate(['/auth/logged']); // redirect here as the API doesn't exist :)
+      const email = this.signInForm.get('email').value
+      const password = this.signInForm.get('password').value
       this.authService.signInUser(email, password).then(
         () => {
-            console.log('success');
-            this.router.navigate(['/auth/logged']);
-        }
-      ).catch(
+          this.router.navigate(['/auth/logged']);
+        },
         (error) => {
-          console.log(error.message);
+          this.errorMessage = error
         }
-      );
+      )
     }
   }
 
