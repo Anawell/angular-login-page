@@ -55,7 +55,14 @@ export class SigninComponent implements OnInit {
           this.router.navigate(['/auth/logged']);
         },
         (error) => {
-          this.errorMessage = error
+          console.log(error)
+          if (error.code === "auth/wrong-password") {
+            this.errorMessage = 'Prosím znovu zkontrolujte heslo, zdá se, že je špatné...';
+          } else if (error.code === "auth/user-not-found") {
+            this.errorMessage = 'S touto e-mailovou adresou neodpovídá žádný uživatel.';
+          } else {
+            this.errorMessage = error;
+          } 
         }
       )
     }

@@ -44,6 +44,16 @@
 
     &__label {
         margin-bottom: $spacer;
+
+        &--required {
+            position: relative;
+        }
+
+        &--required::after {
+            content: "*";
+            font-weight: 700;
+            color: renderColor(accent);
+        }
     }
 
 }

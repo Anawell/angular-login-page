@@ -4,7 +4,7 @@
             <div class="glasscard__body">
                 <h2 class="glasscard__title title--h2">Přihlaste se</h2>
                 <div class="form__item">
-                    <label for="email" class="form__label">
+                    <label for="email" class="form__label form__label--required">
                         Váš e-mail
                     </label>
                     <input id="email" type="email" class="form__input" [ngClass]="{'form__input--error': email.invalid && isSubmitted}" formControlName="email" placeholder="petr.novotny@gmail.com" required>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="form__item">
-                    <label for="password" class="form__label">
+                    <label for="password" class="form__label form__label--required">
                         Vaše heslo
                     </label>
                     <input id="password" type="password" class="form__input" [ngClass]="{'form__input--error': password.invalid && isSubmitted}" formControlName="password" placeholder="min. 6 znaky" required>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="glasscard__footer form__actions flex flex-col items-center justify-center">
-                <div class="message message--error mb-2 text-center">{{ errorMessage }}</div>
+                <div *ngIf="errorMessage" class="message message--error mb-2 text-center" aria-live="assertive">{{ errorMessage }}</div>
                 <button type="submit" class="btn btn--primary form__submit">
                     Přihlásit se
                 </button>
