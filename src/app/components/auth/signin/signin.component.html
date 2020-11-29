@@ -10,10 +10,10 @@
                     <input id="email" type="email" class="form__input" [ngClass]="{'form__input--error': email.invalid && isSubmitted}" formControlName="email" placeholder="petr.novotny@gmail.com" required>
                     <div *ngIf="isInputValid('email')" class="message message--error" aria-live="assertive">
                         <p *ngIf="email.errors.required">
-                            Položka "email" musí být vyplněna.
+                            Email musí být vyplněn.
                         </p>
                         <p *ngIf="email.errors.pattern">
-                            Prosím zadejte platný email.
+                            Zadejte prosím platný email.
                         </p>
                     </div>
                 </div>
@@ -24,10 +24,10 @@
                     <input id="password" type="password" class="form__input" [ngClass]="{'form__input--error': password.invalid && isSubmitted}" formControlName="password" placeholder="min. 6 znaky" required>
                     <div *ngIf="isInputValid('password')" class="message message--error" aria-live="assertive">
                         <p *ngIf="password.errors.required">
-                            Položka "password" musí být vyplněna.
+                            Heslo musí být vyplněno.
                         </p>
                         <p *ngIf="password.errors.minlength">
-                            Heslo musí obsahovat alespoň 6 znaky.
+                            Heslo musí obsahovat alespoň 6&nbsp;znaků.
                         </p>
                     </div>
                 </div>

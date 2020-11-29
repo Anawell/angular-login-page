@@ -43,13 +43,13 @@ export class AuthService {
     )
   }
 
-  // REST api methode
+  // REST api method
   /* signInUser(email: string, password: string): Observable<any> {
     return this.http.post(this.apiUrl+'/auth/login', { username: email, password: password })
       .pipe(
         map((response: Response) => {
             this.token = response['token']; 
-            let expiresIn = response['expires_in'];
+            const expiresIn = response['expires_in'];
             if (this.token) {
                 localStorage.setItem('user', JSON.stringify({ expires_in: expiresIn, token: this.token })); // Keep user logged
             }

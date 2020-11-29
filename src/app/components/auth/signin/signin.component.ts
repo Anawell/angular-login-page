@@ -48,19 +48,17 @@ export class SigninComponent implements OnInit {
   onLogin() {
     this.isSubmitted = true;
     if(this.signInForm.valid) {
-      const email = this.signInForm.get('email').value
-      const password = this.signInForm.get('password').value
+      const email = this.signInForm.get('email').value;
+      const password = this.signInForm.get('password').value;
       this.authService.signInUser(email, password).then(
         () => {
           this.router.navigate(['/auth/logged']);
         },
         (error) => {
-          if (error.code === "auth/wrong-password") {
-            this.errorMessage = 'Prosím znovu zkontrolujte heslo, zdá se, že je špatné...';
-          } else if (error.code === "auth/user-not-found") {
-            this.errorMessage = 'S touto e-mailovou adresou neodpovídá žádný uživatel.';
+          if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+            this.errorMessage = 'Zadané údaje nejsou správné, zkuste to prosím znovu.';
           } else {
-            this.errorMessage = 'Došlo k chybě. Zkuste se znovu přihlásit.';
+            this.errorMessage = 'Došlo k chybě. Zkuste se prosím znovu přihlásit.';
           } 
         }
       )
@@ -78,7 +76,7 @@ export class SigninComponent implements OnInit {
       if(!this.errorMessage)
         this.router.navigate(['/auth/logged']);
     }, error => {
-      this.errorMessage = "Došlo k chybě. Zkuste se znovu přihlásit.";
+      this.errorMessage = "Zadané údaje nejsou správné...";
     } );
   } */
 
