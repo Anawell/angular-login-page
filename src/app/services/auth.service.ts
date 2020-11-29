@@ -1,15 +1,37 @@
 import { Injectable } from '@angular/core';
+
+// Firebase
 import firebase from 'firebase/app'; 
 import 'firebase/auth';
+
+
+// REST api
+/*import { HttpClient, HttpHeaders } from '@angular/common/http';
+  import { Observable } from 'rxjs';
+  import { map } from 'rxjs/operators'; 
+  import { apiUrl } from '../../environments/env';
+*/
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  // NB: ce sont des methodes asynchrones !
-  constructor() { }
+  
+  // REST api method
+  /* 
+  public token: string;
+  public headers: HttpHeaders;
+  public readonly apiUrl = apiUrl; */
 
+  constructor(/* public http: HttpClient */) {
+      // REST api methode: if a token is already saved
+      /* const currentUser = JSON.parse(localStorage.getItem('user'));
+      this.token = currentUser && currentUser.token; */
+   }
+
+  // Firebase methode
   signInUser(email: string, password: string) {
     return new Promise(
       (resolve, reject) => {
@@ -20,6 +42,21 @@ export class AuthService {
       }
     )
   }
+
+  // REST api methode
+  /* signInUser(email: string, password: string): Observable<any> {
+    return this.http.post(this.apiUrl+'/auth/login', { username: email, password: password })
+      .pipe(
+        map((response: Response) => {
+            this.token = response['token']; 
+            let expiresIn = response['expires_in'];
+            if (this.token) {
+                localStorage.setItem('user', JSON.stringify({ expires_in: expiresIn, token: this.token })); // Keep user logged
+            }
+            return response;
+        })
+      );
+  } */
 
 }
 

@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
   errorMessage: string;
   isSubmitted: boolean;
   signInForm: FormGroup = this.formBuilder.group({
-    /* email: ['', [Validators.required, Validators.email]], */
+    /* email: ['', [Validators.required, Validators.email]], // Find out that this method doesn't prevent if user type 'username@emailcom' */
     email: ['', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
@@ -44,6 +44,7 @@ export class SigninComponent implements OnInit {
     return this.signInForm.get('password');
   }
 
+  // Firebase method
   onLogin() {
     this.isSubmitted = true;
     if(this.signInForm.valid) {
@@ -65,6 +66,21 @@ export class SigninComponent implements OnInit {
       )
     }
   }
+
+  // REST api method
+  /* onLogin() {
+    this.authService.signInUser(this.email.value, this.password.value)
+    .subscribe(res => {
+      this.errorMessage = '';
+      if(Array.isArray(res)) {
+        this.errorMessage += res[0];
+      } 
+      if(!this.errorMessage)
+        this.router.navigate(['/auth/logged']);
+    }, error => {
+      this.errorMessage = "Došlo k chybě. Zkuste se znovu přihlásit.";
+    } );
+  } */
 
   initSeoMeta() {
     this.seoMetatagsService.setSeoMeta('Přihlásit se | Webkomplet', 'Barevný přihlašovací formulář vytvořený pomocí Angular')
