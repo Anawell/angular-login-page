@@ -1,6 +1,6 @@
 <main class="page__wrapper page__wrapper--pink flex justify-center items-center">
-    <div class="glasscard flex justify-center items-center">
-        <form [formGroup]="signInForm" (ngSubmit)="onLogin()" class="form">
+    <form [formGroup]="signInForm" (ngSubmit)="onLogin()" class="form flex justify-center items-center">
+        <div class="glasscard flex flex-col justify-center items-center">
             <div class="glasscard__body">
                 <h2 class="glasscard__title title--h2">Přihlaste se</h2>
                 <div class="form__item">
@@ -38,7 +38,7 @@
                     Přihlásit se
                 </button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </main>
 
